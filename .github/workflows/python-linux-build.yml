@@ -1,0 +1,36 @@
+name: Build Python App for Linux (x86_64)
+
+on:
+  workflow_dispatch:  # Only allow manual run
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu as the build environment
+
+    steps:
+    # Step 1: Checkout the code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checks out the repository code
+
+    # Step 2: Set up the Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v2  # Sets up the Python environment
+      with:
+        python-version: '3.11'  # Choose the appropriate Python version
+
+    # Step 3: Install dependencies from requirements.txt
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # Install the required dependencies
+
+    # Step 4: Build the executable using PyInstaller (no need to install PyInstaller here)
+    - name: Build executable
+      run: |
+        pyinstaller --onefile demo.py  # Use PyInstaller to create a single executable for the Python script
+
+    # Step 5: Upload the generated executable as an artifact
+    - name: Upload executable as artifact
+      uses: actions/upload-artifact@v2  # Uploads the generated executable file as a GitHub Actions artifact
+      with:
+        name: demo-executable  # Name the artifact
+        path: dist/demo  # Path to the generated executable file in the dist folder
