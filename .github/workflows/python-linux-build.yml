@@ -12,23 +12,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4  # Checks out the repository code
 
-    # Step 2: Set up the Python environment
-    - name: Set up Python
-      uses: actions/setup-python@v5  # Sets up the Python environment
-      with:
-        python-version: '3.13'  # Choose the appropriate Python version
-
-    # Step 3: Install dependencies from requirements.txt
-    - name: Install dependencies
+    # Step 2: Use Docker to simulate a low version glibc environment
+    - name: Build executable with Docker (Ubuntu 18.04)
       run: |
-        pip install -r requirements.txt  # Install the required dependencies
+        docker run --rm -v $(pwd):/workspace -w /workspace ubuntu:18.04 bash -c "
+          apt-get update && apt-get install -y python3 python3-pip pyinstaller
+          pip3 install -r requirements.txt
+          pyinstaller --onefile demo.py
+        "
 
-    # Step 4: Build the executable using PyInstaller (no need to install PyInstaller here)
-    - name: Build executable
-      run: |
-        pyinstaller --onefile demo.py  # Use PyInstaller to create a single executable for the Python script
-
-    # Step 5: Upload the generated executable as an artifact
+    # Step 3: Upload the generated executable as an artifact
     - name: Upload executable as artifact
       uses: actions/upload-artifact@v4  # Uploads the generated executable file as a GitHub Actions artifact
       with:
