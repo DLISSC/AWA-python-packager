@@ -10,13 +10,13 @@ jobs:
     steps:
     # Step 1: Checkout the code from the repository
     - name: Checkout code
-      uses: actions/checkout@v2  # Checks out the repository code
+      uses: actions/checkout@v4  # Checks out the repository code
 
     # Step 2: Set up the Python environment
     - name: Set up Python
-      uses: actions/setup-python@v2  # Sets up the Python environment
+      uses: actions/setup-python@v5  # Sets up the Python environment
       with:
-        python-version: '3.11'  # Choose the appropriate Python version
+        python-version: '3.13'  # Choose the appropriate Python version
 
     # Step 3: Install dependencies from requirements.txt
     - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
 
     # Step 5: Upload the generated executable as an artifact
     - name: Upload executable as artifact
-      uses: actions/upload-artifact@v2  # Uploads the generated executable file as a GitHub Actions artifact
+      uses: actions/upload-artifact@v4  # Uploads the generated executable file as a GitHub Actions artifact
       with:
         name: demo-executable  # Name the artifact
         path: dist/demo  # Path to the generated executable file in the dist folder
