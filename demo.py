@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-df = pd.Dataframe()
-
+df = pd.DataFrame()
+df.to_csv("Test.csv")
 
 print("Hello world")
