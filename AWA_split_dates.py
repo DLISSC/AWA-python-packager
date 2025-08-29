@@ -142,7 +142,7 @@ def load_csv_files(source_folder):
         raise FileNotFoundError(f"Transactions.csv not found in {tr_path}")
     
     # Load CSV files
-    df_ho = pd.read_csv(ho_path, dtype = {'Portfolio Code':str, 'Security Code':str, 'Valuation Date':str}, on_bad_lines = 'skip')
+    df_ho = pd.read_csv(ho_path, dtype = {'Portfolio Code':str, 'Security Code':str, 'Valuation Date':str})
     df_tr = pd.read_csv(tr_path, dtype = {'Portfolio Code':str, 'Security Code':str, 'Transaction Date':str})
     
     # Get rid of any hidden characters in column Valuation Date and Transaction Date
