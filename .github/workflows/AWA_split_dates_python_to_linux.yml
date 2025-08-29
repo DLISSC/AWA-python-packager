@@ -21,12 +21,12 @@ jobs:
           pip3 install --upgrade pip  # Upgrade pip to avoid issues with old versions
           pip3 install -r requirements.txt  # Install dependencies from requirements.txt
           pip3 install pyinstaller  # Install PyInstaller
-          pyinstaller --onefile demo.py  # Build the executable with PyInstaller
+          pyinstaller --onefile AWA_split_dates.py  # Build the executable with PyInstaller
         "
 
     # Step 3: Upload the generated executable as an artifact
     - name: Upload executable as artifact
       uses: actions/upload-artifact@v4  # Uploads the generated executable file as a GitHub Actions artifact
       with:
-        name: demo-executable  # Name the artifact
-        path: dist/demo  # Path to the generated executable file in the dist folder
+        name: AWA_split_dates-executable  # Name the artifact
+        path: dist/AWA_split_dates  # Path to the generated executable file in the dist folder
