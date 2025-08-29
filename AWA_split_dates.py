@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 import re
 
 # Get absolute path of script
-DATASETS_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASETS_DIR = os.getcwd()
 
 def validate_date_format(date_str):
     """Validate if date format is YYYYMMDD"""
