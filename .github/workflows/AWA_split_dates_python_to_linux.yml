@@ -1,4 +1,4 @@
-name: Build Python App for Linux (x86_64)
+name: AWA Split Dates Python to Linux (x86_64)
 
 on:
   workflow_dispatch:  # Only allow manual run
