@@ -1,0 +1,16 @@
+1. Upload 'AWA_split_dates' to WINSCP's /home/net/your username
+2. Once the file is in /home/net/your username, it can be copied to multiple UAT environments (no need to re-upload every time)
+   not sure if it's the same for Prod/DR environments
+3. Use Putty to copy file to data/datasets
+   	3A. log into Putty
+	3B. enter ssh A-B-C-D.ssnc-corp.cloud to connect to specific UAT environment
+	3C. once logged in, enter      /mdasapps/bin/arssudo            this grants admin rights
+        3D. enter                      cd /data/datasets          
+		   (My current logic puts 'AWA_split_dates' in folder ‘datasets', if AWA doesn't allow, I'll modify the script)
+	3E. copy file, enter           cp /home/net/your username/AWA_split_dates .       (. means current folder, don't ignore)
+4. Give file executable right, enter   chmod +x AWA_split_dates
+5. Execute file, enter                 ./AWA_split_dates
+6. After file is executed, go back to WinSCP, refresh page, new folders will show up
+
+Note: This procedure applies to all other executable files, if their names are different, just replace 'AWA_split_dates' with their names                   
+          
