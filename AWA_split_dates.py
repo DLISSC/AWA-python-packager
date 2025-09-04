@@ -206,7 +206,6 @@ def copy_additional_folders(source_folder, target_folders):
             if os.path.exists(target_context):
                 shutil.rmtree(target_context)
             shutil.copytree(source_context, target_context)
-            print(f"Copied context_data to {target_folder}")
         
         # Copy portfolio folder
         # Here will replace the original subfolder
@@ -214,7 +213,6 @@ def copy_additional_folders(source_folder, target_folders):
             if os.path.exists(target_portfolio):
                 shutil.rmtree(target_portfolio)
             shutil.copytree(source_portfolio, target_portfolio)
-            print(f"Copied portfolio to {target_folder}")
 
 
 def main():
