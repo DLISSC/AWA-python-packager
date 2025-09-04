@@ -193,6 +193,10 @@ def copy_additional_folders(source_folder, target_folders):
     source_portfolio = os.path.join(DATASETS_DIR, source_folder, 'portfolio')
     
     for target_folder in target_folders:
+        
+        if target_folder == source_folder:
+            continue
+        
         target_context = os.path.join(DATASETS_DIR, target_folder, 'context_data')
         target_portfolio = os.path.join(DATASETS_DIR, target_folder, 'portfolio')
         
